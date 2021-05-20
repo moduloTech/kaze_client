@@ -14,8 +14,8 @@ module LastbillClient
       super(:post, "api/jobs/#{id}/performers")
 
       @body = {
-        "job": {
-          "performer_user_id": "#{performer_user_id}"
+        job: {
+          performer_user_id: performer_user_id.to_s
         }
       }
     end
