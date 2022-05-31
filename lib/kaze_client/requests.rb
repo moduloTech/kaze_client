@@ -12,7 +12,7 @@ require_relative "request/requests/utils/final_request"
 
 # The pre-crafted requests
 require_relative "request/requests/assign_performer_request"
-require_relative "request/requests/companies_request"
+require_relative "request/requests/partners_request"
 require_relative "request/requests/create_job_request"
 require_relative "request/requests/job_request"
 require_relative "request/requests/job_workflow_request"

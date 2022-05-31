@@ -8,12 +8,12 @@ module KazeClient
   # @see KazeClient::Utils::AuthentifiedRequest
   # @see KazeClient::Utils::ListRequest
   # @since 0.1.0
-  class CompaniesRequest < Utils::FinalRequest
+  class PartnersRequest < Utils::FinalRequest
     include Utils::AuthentifiedRequest
     include Utils::ListRequest
 
     def initialize
-      super(:get, "api/companies")
+      super(:get, "api/partners")
     end
   end
 end

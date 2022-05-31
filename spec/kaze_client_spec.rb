@@ -23,7 +23,7 @@ RSpec.describe KazeClient do
     end
 
     it "raises an Invalid Credentials error on bad credentials at login" do
-      request = KazeClient::CompaniesRequest.new
+      request = KazeClient::PartnersRequest.new
 
       expect { client.execute(request) }.to raise_error(KazeClient::Error::Unauthorized)
     end
@@ -116,13 +116,13 @@ RSpec.describe KazeClient do
       # The goal here is just to get those metadata in the response. We do not care if pagination,
       # sorting and filtering were applied. We are not here to test the server's implementation.
       # For instance, +target_id+ is not even a field on /api/companies data.
-      request = KazeClient::CompaniesRequest.new
-                                                .add_page(5)
-                                                .add_per_page(42)
-                                                .add_order_field("id")
-                                                .add_order_direction(:desc)
-                                                .filter_by_id("a")
-                                                .filter_by_target_id("a")
+      request = KazeClient::PartnersRequest.new
+                                           .add_page(5)
+                                           .add_per_page(42)
+                                           .add_order_field("id")
+                                           .add_order_direction(:desc)
+                                           .filter_by_id("a")
+                                           .filter_by_target_id("a")
 
       response = client.execute(request)
 
