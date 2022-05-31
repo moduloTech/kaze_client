@@ -11,7 +11,7 @@ module KazeClient
     include Utils::AuthentifiedRequest
 
     def initialize
-      super(:get, "api/profile")
+      super(:get, 'api/profile')
     end
   end
 end

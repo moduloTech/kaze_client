@@ -12,7 +12,7 @@ module KazeClient
     include Utils::ListRequest
 
     def initialize
-      super(:get, "api/jobs")
+      super(:get, 'api/jobs')
     end
   end
 end

@@ -15,7 +15,7 @@ module KazeClient
       attr_reader :error
 
       # The default error message
-      DEFAULT_MESSAGE = "An unknown error occured"
+      DEFAULT_MESSAGE = 'An unknown error occured'
 
       def initialize(status: :internal_server_error, error: nil,
                      message: DEFAULT_MESSAGE)

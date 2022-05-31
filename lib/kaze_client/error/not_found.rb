@@ -5,7 +5,7 @@ module KazeClient
     # @author ciappa_m@modulotech.fr
     # 404 error sent by Kaze server
     class NotFound < Generic
-      def initialize(msg = "404 Not Found")
+      def initialize(msg = '404 Not Found')
         super(status: :not_found, message: msg)
       end
     end

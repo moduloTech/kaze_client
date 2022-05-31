@@ -16,7 +16,7 @@ module KazeClient
       # @return [KazeClient::Utils::AuthentifiedRequest] self (to chain methods)
       def with_token(token)
         @token                    = token
-        @headers["Authorization"] = token
+        @headers['Authorization'] = token
 
         self
       end

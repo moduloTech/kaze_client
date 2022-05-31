@@ -13,7 +13,7 @@ module KazeClient
     # @param login [String] The user login.
     # @param password [String] The user password.
     def initialize(login:, password:)
-      super(:post, "api/login")
+      super(:post, 'api/login')
 
       @login    = login
       @password = password
