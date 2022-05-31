@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "lastbill_client"
+require "kaze_client"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

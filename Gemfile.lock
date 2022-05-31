@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    lastbill_client (0.1.0)
+    kaze_client (0.1.0)
       httparty (~> 0.18, >= 0.18.1)
 
 GEM
@@ -54,7 +54,7 @@ PLATFORMS
   x86_64-darwin-20
 
 DEPENDENCIES
-  lastbill_client!
+  kaze_client!
   rake (~> 13.0)
   rspec (~> 3.0)
   rubocop (~> 1.7)

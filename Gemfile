@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-# Specify your gem's dependencies in lastbill_client.gemspec
+# Specify your gem's dependencies in kaze_client.gemspec
 gemspec
 
 gem "rake", "~> 13.0"
