@@ -13,7 +13,7 @@ module KazeClient
     # @see KazeClient::Client#login
     attr_reader :token
 
-    # @param base_url [String] The server's base URL (e.g. https://app.kaze.som)
+    # @param base_url [String] The server's base URL (e.g. https://app.kaze.so)
     def initialize(base_url)
       @base_url = base_url
       @token    = nil
