@@ -13,7 +13,7 @@ module KazeClient
     # @see KazeClient::Client#login
     attr_reader :token
 
-    # @param base_url [String] The server's base URL (e.g. https://app.kaze.som)
+    # @param base_url [String] The server's base URL (e.g. https://app.kaze.so)
     def initialize(base_url)
       @base_url = base_url
       @token    = nil
@@ -52,14 +52,14 @@ module KazeClient
     def login(login = @login, password = @password)
       # Impossible to login using nil login or password.
       # The first call to #login must be given a login and a password.
-      raise KazeClient::Error::InvalidCredentials, "Please set login and password" if login.nil? || password.nil?
+      raise KazeClient::Error::InvalidCredentials, 'Please set login and password' if login.nil? || password.nil?
 
       request = KazeClient::LoginRequest.new(login: login, password: password)
 
       response = do_execute(request)
 
       # Store the token for next request and the login/password for next call
-      @token    = response["token"]
+      @token    = response['token']
       @login    = login
       @password = password
 

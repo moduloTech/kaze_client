@@ -19,7 +19,7 @@ module KazeClient
     # @param target_id [String] The id of the target company.
     # @param workflow [Hash] The workflow to use to create the job.
     def initialize(target_id, workflow)
-      super(:post, "api/jobs")
+      super(:post, 'api/jobs')
 
       @target_id = target_id
       @workflow  = workflow

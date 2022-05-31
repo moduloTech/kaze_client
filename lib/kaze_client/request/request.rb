@@ -9,8 +9,8 @@ module KazeClient
   class Request
     # Those headers are added on all requests by default
     DEFAULT_HEADERS = {
-      "Content-Type" => "application/json",
-      "Accept" => "application/json"
+      'Content-Type' => 'application/json',
+      'Accept' => 'application/json'
     }.freeze
 
     # @return [String, Symbol] The HTTP verb to use for the request
@@ -69,14 +69,14 @@ module KazeClient
       return KazeClient::Error::NotFound.new if response.code == 404
 
       # Return the adequate error class for the error code in the response
-      "KazeClient::Error::#{response.parsed_response["error"].camelize}"
-        .constantize.new(response.parsed_response["message"])
+      "KazeClient::Error::#{response.parsed_response['error'].camelize}"
+        .constantize.new(response.parsed_response['message'])
     rescue NameError
       # This means no error class exists for the error code in the response, we fallback to a
       # generic error
       Error::Generic.new(status: response.code,
-                         error: response.parsed_response["error"],
-                         message: response.parsed_response["message"])
+                         error: response.parsed_response['error'],
+                         message: response.parsed_response['message'])
     end
 
     protected

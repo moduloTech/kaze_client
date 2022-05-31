@@ -73,7 +73,7 @@ module KazeClient
       # @return [KazeClient::Utils::ListRequest] self (to chain methods)
       def add_order_direction(direction)
         # Ensure the +direction+ parameter is valid; default direction is ascendant
-        @order_direction = %w[asc desc].include?(direction.to_s) ? direction.to_s : "asc"
+        @order_direction = %w[asc desc].include?(direction.to_s) ? direction.to_s : 'asc'
 
         @query[:order_direction] = @order_direction
 
