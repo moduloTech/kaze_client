@@ -57,17 +57,47 @@ RSpec.describe KazeClient do
   end
 
   describe 'authentified requests' do
-    let(:client) { KazeClient::Client.new('https://staging.lastbill.co') }
-    let(:auth_token) do
-      request = KazeClient::LoginRequest.new(login: 'test@test.test', password: 'password')
-
-      response = client.execute(request)
-
-      response['token']
-    end
+    # rubocop:disable Layout/LineLength
+    let(:auth_token) { 'g0gMaMK3wy53OhrOb250NpYeebpEsKA9JJI70l7G8bHtZgHtDDj8bBOsc4euXph5HEldQumppYytrreeADwkEiQBOr1Revqx56AuvNZqaS2NyvXqME3KLGe6R2YjKY5i' }
+    # rubocop:enable Layout/LineLength
 
     it 'responds with success on profile request with given token' do
       request = KazeClient::ProfileRequest.new.with_token(auth_token)
+
+      client = KazeClient::Client.new('https://staging.lastbill.co')
+      allow(client).to receive(:login)
+
+      response = client.execute(request)
+
+      # Check the response is valid
+      expect(response).to be_a_kind_of(KazeClient::Response)
+      expect(response.dig('user', 'email')).to eq('test@test.test')
+
+      # Since token was given on the request, no login call should have been made
+      expect(client).not_to have_received(:login)
+    end
+
+    it 'raises InvalidCredentials on profile request without token nor initial login' do
+      request = KazeClient::ProfileRequest.new
+
+      client = KazeClient::Client.new('https://staging.lastbill.co')
+      allow(client).to(receive(:login))
+                   .and_raise(KazeClient::Error::InvalidCredentials,
+                              'Please set login and password')
+
+      expect { client.execute(request) }.to(
+        raise_error(KazeClient::Error::InvalidCredentials, 'Please set login and password')
+      )
+
+      # Since token was not given, login call should have been made (and fail since no creds)
+      expect(client).to have_received(:login).with(no_args)
+    end
+
+    it 'responds with success on profile request with initial login' do
+      client = KazeClient::Client.new('https://staging.lastbill.co')
+      client.login('test@test.test', 'password')
+
+      request = KazeClient::ProfileRequest.new
 
       response = client.execute(request)
 
@@ -76,20 +106,44 @@ RSpec.describe KazeClient do
       expect(response.dig('user', 'email')).to eq('test@test.test')
     end
 
-    it 'raises InvalidCredentials on profile request without token nor initial login' do
-      request = KazeClient::ProfileRequest.new
-
-      expect { client.execute(request) }.to(
-        raise_error(KazeClient::Error::InvalidCredentials, 'Please set login and password')
-      )
-    end
-
-    it 'responds with success on profile request with initial login' do
-      client.login('test@test.test', 'password')
+    it 'responds with success on profile request with credentials already set' do
+      client = KazeClient::Client.new('https://staging.lastbill.co')
+      client.instance_variable_set(:@login, 'test@test.test')
+      client.instance_variable_set(:@password, 'password')
 
       request = KazeClient::ProfileRequest.new
 
       response = client.execute(request)
+
+      # Check the response is valid
+      expect(response).to be_a_kind_of(KazeClient::Response)
+      expect(response.dig('user', 'email')).to eq('test@test.test')
+    end
+
+    it 'responds with success on profile request when client is initialized with token' do
+      client = KazeClient::Client.new('https://staging.lastbill.co', token: auth_token)
+      allow(client).to receive(:login)
+      request = KazeClient::ProfileRequest.new
+
+      response = client.execute(request)
+
+      # Since token was given, login call should not have been made
+      expect(client).not_to have_received(:login)
+
+      # Check the response is valid
+      expect(response).to be_a_kind_of(KazeClient::Response)
+      expect(response.dig('user', 'email')).to eq('test@test.test')
+    end
+
+    it 'responds with success on profile request when client is assigned a token' do
+      client = KazeClient::Client.new('https://staging.lastbill.co').with_token(auth_token)
+      allow(client).to receive(:login)
+      request = KazeClient::ProfileRequest.new
+
+      response = client.execute(request)
+
+      # Since token was given, login call should not have been made
+      expect(client).not_to have_received(:login)
 
       # Check the response is valid
       expect(response).to be_a_kind_of(KazeClient::Response)

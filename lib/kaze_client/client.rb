@@ -14,9 +14,10 @@ module KazeClient
     attr_reader :token
 
     # @param base_url [String] The server's base URL (e.g. https://app.kaze.so)
-    def initialize(base_url)
+    # @param token [String] The authentication token
+    def initialize(base_url, token: nil)
       @base_url = base_url
-      @token    = nil
+      @token    = token
       @login    = nil
       @password = nil
     end
@@ -64,6 +65,16 @@ module KazeClient
       @password = password
 
       response
+    end
+
+    # Set the authentication token
+    #
+    # @param token [String] The new authentication token
+    # @return [KazeClient::Client] The client after assigning the new token
+    def with_token(token)
+      @token = token
+
+      self
     end
 
     private
