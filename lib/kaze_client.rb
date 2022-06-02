@@ -4,13 +4,15 @@
 require 'activesupport/blank'
 require 'activesupport/camelize'
 
-# Require HTTParty
+# Require third-part libraries
 require 'httparty'
+require 'jsonpath'
 
 # Require the version number
 require_relative 'kaze_client/version'
 
 # Require the different parts of the gem
+require_relative 'kaze_client/json_utils'
 require_relative 'kaze_client/errors'
 require_relative 'kaze_client/requests'
 require_relative 'kaze_client/response'

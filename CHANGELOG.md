@@ -1,3 +1,7 @@
+## [0.2.1] - 2022-06-17
+
+- Add methods and utilities to get and set data in the response.
+
 ## [0.2.0] - 2022-06-01
 
 - Allow to set the authentication token on the client skipping login step.

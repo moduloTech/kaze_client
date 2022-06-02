@@ -3,6 +3,10 @@
 # rubocop:disable Metrics/BlockLength
 
 RSpec.describe KazeClient do
+  # rubocop:disable Layout/LineLength
+  let(:auth_token) { 'g0gMaMK3wy53OhrOb250NpYeebpEsKA9JJI70l7G8bHtZgHtDDj8bBOsc4euXph5HEldQumppYytrreeADwkEiQBOr1Revqx56AuvNZqaS2NyvXqME3KLGe6R2YjKY5i' }
+  # rubocop:enable Layout/LineLength
+
   it 'has a version number' do
     expect(KazeClient::VERSION).not_to be nil
   end
@@ -57,10 +61,6 @@ RSpec.describe KazeClient do
   end
 
   describe 'authentified requests' do
-    # rubocop:disable Layout/LineLength
-    let(:auth_token) { 'g0gMaMK3wy53OhrOb250NpYeebpEsKA9JJI70l7G8bHtZgHtDDj8bBOsc4euXph5HEldQumppYytrreeADwkEiQBOr1Revqx56AuvNZqaS2NyvXqME3KLGe6R2YjKY5i' }
-    # rubocop:enable Layout/LineLength
-
     it 'responds with success on profile request with given token' do
       request = KazeClient::ProfileRequest.new.with_token(auth_token)
 
@@ -152,13 +152,7 @@ RSpec.describe KazeClient do
   end
 
   describe 'list requests' do
-    let(:client) do
-      client = KazeClient::Client.new('https://staging.lastbill.co')
-
-      client.login('test@test.test', 'password')
-
-      client
-    end
+    let(:client) { KazeClient::Client.new('https://staging.lastbill.co', token: auth_token) }
 
     it 'applies metadata with success on companies request' do
       # On /api/companies, default parameters are:
@@ -192,13 +186,7 @@ RSpec.describe KazeClient do
   end
 
   describe 'jobs requests' do
-    let(:client) do
-      client = KazeClient::Client.new('https://staging.lastbill.co')
-
-      client.login('test@test.test', 'password')
-
-      client
-    end
+    let(:client) { KazeClient::Client.new('https://staging.lastbill.co', token: auth_token) }
 
     it 'gets the list of the jobs' do
       request = KazeClient::JobsRequest.new
@@ -212,13 +200,62 @@ RSpec.describe KazeClient do
     end
 
     it 'gets the details of the job' do
-      request = KazeClient::JobRequest.new('ee33d67a-3211-4781-b589-4b76d1bb7462')
+      request = KazeClient::JobRequest.new('c616f8de-7d7e-4a35-96c9-41c1345a6234')
 
       response = client.execute(request)
 
       # Check the response is valid
       expect(response).to be_a_kind_of(KazeClient::Response)
-      expect(response['id']).to eq('ee33d67a-3211-4781-b589-4b76d1bb7462')
+      expect(response['id']).to eq('c616f8de-7d7e-4a35-96c9-41c1345a6234')
+
+      # fetch_child
+      widget = response.fetch_child('test_widget_text')
+      expect(widget).to be_a_kind_of(Hash)
+      expect(widget['type']).to eq('widget_text')
+
+      # fetch_data_from_child
+      data = response.fetch_data_from_child('test_widget_text')
+      expect(data).to eq('this is a test.')
+      access = response.fetch_data_from_child('test_widget_text', field: 'access')
+      expect(access).to eq(133)
+
+      # fetch_widgets
+      expect(response.fetch_widgets).to eq([widget])
+
+      # update_data_in_child
+      response.update_data_in_child('test_widget_text', 'plop')
+      response.update_data_in_child('test_widget_text', 666, field: 'access')
+      data = response.fetch_data_from_child('test_widget_text')
+      expect(data).to eq('plop')
+      access = response.fetch_data_from_child('test_widget_text', field: 'access')
+      expect(access).to eq(666)
+    end
+  end
+
+  describe 'json utils' do
+    shared_examples 'fetch_node' do
+      it 'works' do
+        node = ::KazeClient::JsonUtils.fetch_node(json, '$')
+        expect(node).to be_a_kind_of(Hash)
+        expect(node['a']).to eq('1')
+
+        array = ::KazeClient::JsonUtils.fetch_node(json, '$.c')
+        expect(array).to be_a_kind_of(Array)
+
+        array = ::KazeClient::JsonUtils.fetch_nodes(json, '$..c1')
+        expect(array).to eq(['1', 2])
+      end
+    end
+
+    context 'when json is a hash' do
+      let(:json) { { 'a' => '1', 'b' => 2, 'c' => [{ 'c1' => '1' }, { 'c1' => 2 }] } }
+      include_examples 'fetch_node'
+    end
+
+    context 'when json is a string' do
+      let(:json) { '{"a":"1","b":2,"c":[{"c1":"1"},{"c1":2}]}' }
+
+      include_examples 'fetch_node'
     end
   end
 end

@@ -1,8 +1,9 @@
 PATH
   remote: .
   specs:
-    kaze_client (0.1.1p0)
+    kaze_client (0.2.0)
       httparty (~> 0.18, >= 0.18.1)
+      jsonpath (~> 1.1, >= 1.1.2)
 
 GEM
   remote: https://rubygems.org/
@@ -18,9 +19,12 @@ GEM
     io-console (0.5.11)
     irb (1.4.1)
       reline (>= 0.3.0)
+    jsonpath (1.1.2)
+      multi_json
     mime-types (3.4.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2022.0105)
+    multi_json (1.15.0)
     multi_xml (0.6.0)
     parallel (1.22.1)
     parser (3.1.2.0)
