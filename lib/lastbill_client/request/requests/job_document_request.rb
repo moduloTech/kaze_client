@@ -11,7 +11,6 @@ module KazeClient
   class JobDocumentRequest < Utils::FinalRequest
 
     include Utils::AuthentifiedRequest
-    include Utils::ListRequest
 
     def initialize(job_id, job_document_id)
       super(:get, "api/jobs/#{job_id}/documents/#{job_document_id}")
