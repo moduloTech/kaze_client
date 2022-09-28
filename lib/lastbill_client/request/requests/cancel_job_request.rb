@@ -11,10 +11,9 @@ module KazeClient
   class CancelJobRequest < Utils::FinalRequest
 
     include Utils::AuthentifiedRequest
-    include Utils::ListRequest
 
     def initialize(job_id, cancel_reason_id)
-      super(:put, "api/jobs/#{job_id}/cancel.json")
+      super(:put, "api/jobs/#{job_id}/cancel")
 
       @body = {
         job: { cancel_reason_id: cancel_reason_id }
