@@ -1,3 +1,11 @@
+## [0.3.0] - 2022-09-28
+
+- Add new requests:
+  - Cancel job
+  - Get job document
+  - List users
+  - Upload image
+
 ## [0.2.1] - 2022-06-17
 
 - Add methods and utilities to get and set data in the response.
