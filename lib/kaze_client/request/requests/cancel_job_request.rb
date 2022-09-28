@@ -6,7 +6,7 @@ module KazeClient
   # @see KazeClient::Request
   # @see KazeClient::Utils::FinalRequest
   # @see KazeClient::Utils::AuthentifiedRequest
-  # @since 0.1.0
+  # @since 0.3.0
   class CancelJobRequest < Utils::FinalRequest
     include Utils::AuthentifiedRequest
 

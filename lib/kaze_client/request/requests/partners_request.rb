@@ -7,7 +7,7 @@ module KazeClient
   # @see KazeClient::Utils::FinalRequest
   # @see KazeClient::Utils::AuthentifiedRequest
   # @see KazeClient::Utils::ListRequest
-  # @since 0.1.0
+  # @since 0.1.1
   class PartnersRequest < Utils::FinalRequest
     include Utils::AuthentifiedRequest
     include Utils::ListRequest
