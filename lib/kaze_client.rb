@@ -4,7 +4,8 @@
 require 'activesupport/blank'
 require 'activesupport/camelize'
 
-# Require third-part libraries
+# Require third-party libraries
+require 'pathname'
 require 'httparty'
 require 'jsonpath'
 
