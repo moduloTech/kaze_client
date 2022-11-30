@@ -1,3 +1,9 @@
+# CHANGELOG
+
+## [0.3.1] - 2022-11-30
+
+- Update error handling for more clarity.
+
 ## [0.3.0] - 2022-09-28
 
 - Add new requests:
