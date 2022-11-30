@@ -10,7 +10,7 @@ module KazeClient
     # Those headers are added on all requests by default
     DEFAULT_HEADERS = {
       'Content-Type' => 'application/json',
-      'Accept' => 'application/json'
+      'Accept'       => 'application/json'
     }.freeze
 
     # @return [String, Symbol] The HTTP verb to use for the request
@@ -64,19 +64,12 @@ module KazeClient
     # @param response [HTTParty::Response] The response object from HTTParty call
     # @return [KazeClient::Error::Generic] The adequate error object according to the given response
     def error_for(response)
-      # Not found is handled in a specific way since there is no message key and the error has a
-      # specific format
-      return KazeClient::Error::NotFound.new if response.code == 404
+      error   = response.parsed_response['error']
+      message = response.parsed_response['message']
 
-      # Return the adequate error class for the error code in the response
-      "KazeClient::Error::#{response.parsed_response['error'].camelize}"
-        .constantize.new(response.parsed_response['message'])
-    rescue NameError
-      # This means no error class exists for the error code in the response, we fallback to a
-      # generic error
-      Error::Generic.new(status: response.code,
-                         error: response.parsed_response['error'],
-                         message: response.parsed_response['message'])
+      return non_generic_error(error, message, response) if error != 'generic'
+
+      generic_http_error(error, message, response)
     end
 
     protected
@@ -100,6 +93,8 @@ module KazeClient
         @body
       when Hash
         @body.to_json
+      else
+        @body.to_s
       end
     end
 
@@ -108,6 +103,31 @@ module KazeClient
       return nil if @query.blank?
 
       @query
+    end
+
+    def non_generic_error(error, message, response)
+      # Return the adequate error class for the error code in the response
+      "KazeClient::Error::#{error.camelize}".constantize.new(message)
+    rescue NameError
+      # This means no error class exists for the error code in the response, we fallback to a
+      # generic error
+      Error::Generic.new(status: response.code, error: error, message: message)
+    end
+
+    def generic_http_error(error, message, response)
+      case response.code
+      when 401
+        KazeClient::Error::Unauthorized.new(message)
+      when 403
+        KazeClient::Error::Forbidden.new(message)
+      when 404
+        KazeClient::Error::NotFound.new
+      when 500
+        KazeClient::Error::InternalServerError.new(message)
+      else
+        # This means no error class exists for the response code, we fallback to a generic error
+        Error::Generic.new(status: response.code, error: error, message: message)
+      end
     end
   end
 end
