@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## [0.3.2]
+
+- Add new requests:
+  - Upload activestorage attachment
+
 ## [0.3.1] - 2022-11-30
 
 - Update error handling for more clarity.
