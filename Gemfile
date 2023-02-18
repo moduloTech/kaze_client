@@ -16,3 +16,7 @@ gem 'rubocop-rake', '~> 0.6.0'
 gem 'rubocop-rspec', '~> 2.11.1'
 
 gem 'debug', '~> 1.5'
+
+gem 'yard', '~> 0.9.28'
+
+gem 'bundler-audit', '~> 0.9.1'

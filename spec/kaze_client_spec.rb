@@ -12,7 +12,7 @@ RSpec.describe KazeClient do
   end
 
   describe 'error handling' do
-    let(:client) { KazeClient::Client.new('https://staging.lastbill.co') }
+    let(:client) { KazeClient::Client.new('https://staging.kaze.so') }
 
     it 'raises a Not Found error on unknown API' do
       request = KazeClient::Request.new(:post, '/login')
@@ -34,7 +34,7 @@ RSpec.describe KazeClient do
   end
 
   describe 'login request' do
-    let(:client) { KazeClient::Client.new('https://staging.lastbill.co') }
+    let(:client) { KazeClient::Client.new('https://staging.kaze.so') }
 
     it 'responds with success on valid credentials' do
       request = KazeClient::LoginRequest.new(login: 'test@test.test', password: 'password')
@@ -64,7 +64,7 @@ RSpec.describe KazeClient do
     it 'responds with success on profile request with given token' do
       request = KazeClient::ProfileRequest.new.with_token(auth_token)
 
-      client = KazeClient::Client.new('https://staging.lastbill.co')
+      client = KazeClient::Client.new('https://staging.kaze.so')
       allow(client).to receive(:login)
 
       response = client.execute(request)
@@ -80,7 +80,7 @@ RSpec.describe KazeClient do
     it 'raises InvalidCredentials on profile request without token nor initial login' do
       request = KazeClient::ProfileRequest.new
 
-      client = KazeClient::Client.new('https://staging.lastbill.co')
+      client = KazeClient::Client.new('https://staging.kaze.so')
       allow(client).to(receive(:login))
                    .and_raise(KazeClient::Error::InvalidCredentials,
                               'Please set login and password')
@@ -94,7 +94,7 @@ RSpec.describe KazeClient do
     end
 
     it 'responds with success on profile request with initial login' do
-      client = KazeClient::Client.new('https://staging.lastbill.co')
+      client = KazeClient::Client.new('https://staging.kaze.so')
       client.login('test@test.test', 'password')
 
       request = KazeClient::ProfileRequest.new
@@ -107,7 +107,7 @@ RSpec.describe KazeClient do
     end
 
     it 'responds with success on profile request with credentials already set' do
-      client = KazeClient::Client.new('https://staging.lastbill.co')
+      client = KazeClient::Client.new('https://staging.kaze.so')
       client.instance_variable_set(:@login, 'test@test.test')
       client.instance_variable_set(:@password, 'password')
 
@@ -121,7 +121,7 @@ RSpec.describe KazeClient do
     end
 
     it 'responds with success on profile request when client is initialized with token' do
-      client = KazeClient::Client.new('https://staging.lastbill.co', token: auth_token)
+      client = KazeClient::Client.new('https://staging.kaze.so', token: auth_token)
       allow(client).to receive(:login)
       request = KazeClient::ProfileRequest.new
 
@@ -136,7 +136,7 @@ RSpec.describe KazeClient do
     end
 
     it 'responds with success on profile request when client is assigned a token' do
-      client = KazeClient::Client.new('https://staging.lastbill.co').with_token(auth_token)
+      client = KazeClient::Client.new('https://staging.kaze.so').with_token(auth_token)
       allow(client).to receive(:login)
       request = KazeClient::ProfileRequest.new
 
@@ -152,7 +152,7 @@ RSpec.describe KazeClient do
   end
 
   describe 'list requests' do
-    let(:client) { KazeClient::Client.new('https://staging.lastbill.co', token: auth_token) }
+    let(:client) { KazeClient::Client.new('https://staging.kaze.so', token: auth_token) }
 
     it 'applies metadata with success on companies request' do
       # On /api/companies, default parameters are:
@@ -186,7 +186,7 @@ RSpec.describe KazeClient do
   end
 
   describe 'jobs requests' do
-    let(:client) { KazeClient::Client.new('https://staging.lastbill.co', token: auth_token) }
+    let(:client) { KazeClient::Client.new('https://staging.kaze.so', token: auth_token) }
 
     it 'gets the list of the jobs' do
       request = KazeClient::JobsRequest.new

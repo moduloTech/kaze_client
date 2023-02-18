@@ -10,7 +10,7 @@ module KazeClient
     # Those headers are added on all requests by default
     DEFAULT_HEADERS = {
       'Content-Type' => 'application/json',
-      'Accept'       => 'application/json'
+      'Accept' => 'application/json'
     }.freeze
 
     # @return [String, Symbol] The HTTP verb to use for the request
@@ -109,21 +109,15 @@ module KazeClient
       # Return the adequate error class for the error code in the response
       "KazeClient::Error::#{error.camelize}".constantize.new(message)
     rescue NameError
-      # This means no error class exists for the error code in the response, we fallback to a
-      # generic error
-      Error::Generic.new(status: response.code, error: error, message: message)
+      generic_http_error(error, message, response)
     end
 
     def generic_http_error(error, message, response)
       case response.code
-      when 401
-        KazeClient::Error::Unauthorized.new(message)
-      when 403
-        KazeClient::Error::Forbidden.new(message)
-      when 404
-        KazeClient::Error::NotFound.new
-      when 500
-        KazeClient::Error::InternalServerError.new(message)
+      when 401 then KazeClient::Error::Unauthorized.new(message)
+      when 403 then KazeClient::Error::Forbidden.new(message)
+      when 404 then KazeClient::Error::NotFound.new
+      when 500 then KazeClient::Error::InternalServerError.new(message)
       else
         # This means no error class exists for the response code, we fallback to a generic error
         Error::Generic.new(status: response.code, error: error, message: message)

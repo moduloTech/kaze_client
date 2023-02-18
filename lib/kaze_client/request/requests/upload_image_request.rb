@@ -13,23 +13,18 @@ module KazeClient
   #   response = KazeClient::Client.new(URL).execute(request)
   #   request.send_image(response['direct_upload'])
   class UploadImageRequest < Utils::FinalRequest
-
     include Utils::AuthentifiedRequest
 
     def initialize(filepath)
       super(:post, 'api/direct_uploads')
-      @filepath = if filepath.is_a?(Pathname)
-                    filepath
-                  else
-                    Pathname.new(filepath.to_s)
-                  end
+
+      @filepath = filepath.is_a?(Pathname) ? filepath : Pathname.new(filepath.to_s)
       @filename = @filepath.basename.to_s
 
       @body = {
         blob: {
-          filename:     @filename,
-          byte_size:    File.size(@filepath),
-          checksum:     Digest::MD5.base64digest(@filepath.read),
+          filename: @filename, byte_size: File.size(@filepath),
+          checksum: Digest::MD5.base64digest(@filepath.read),
           content_type: "image/#{@filename.split('.')[1]}"
         }
       }
@@ -40,7 +35,5 @@ module KazeClient
       header = direct_uploads['headers']
       HTTParty.put(direct_uploads['url'], { body: body, headers: header })
     end
-
   end
-
 end

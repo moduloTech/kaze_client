@@ -11,13 +11,26 @@ require_relative 'request/requests/utils/list_request'
 require_relative 'request/requests/utils/final_request'
 
 # The pre-crafted requests
-require_relative 'request/requests/assign_performer_request'
-require_relative 'request/requests/partners_request'
-require_relative 'request/requests/create_job_request'
-require_relative 'request/requests/job_request'
-require_relative 'request/requests/job_workflow_request'
-require_relative 'request/requests/job_workflows_request'
-require_relative 'request/requests/jobs_request'
+
+# => Jobs
+require_relative 'request/requests/jobs/assign_performer_request'
+require_relative 'request/requests/jobs/create_job_request'
+require_relative 'request/requests/jobs/job_request'
+require_relative 'request/requests/jobs/job_workflow_request'
+require_relative 'request/requests/jobs/job_workflows_request'
+require_relative 'request/requests/jobs/jobs_request'
+require_relative 'request/requests/jobs/update_template_request'
+
+# => Collections
+require_relative 'request/requests/collections/collection_request'
+require_relative 'request/requests/collections/collections_request'
+# => => Items
+require_relative 'request/requests/collections/items/item_request'
+require_relative 'request/requests/collections/items/items_request'
+
+# => General
 require_relative 'request/requests/login_request'
+require_relative 'request/requests/partners_request'
 require_relative 'request/requests/profile_request'
-require_relative 'request/requests/update_template_request'
+require_relative 'request/requests/upload_image_request'
+require_relative 'request/requests/users_request'
