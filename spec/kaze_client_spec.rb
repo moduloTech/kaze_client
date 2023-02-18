@@ -17,6 +17,7 @@ RSpec.describe KazeClient do
     it 'raises a Not Found error on unknown API' do
       request = KazeClient::Request.new(:post, '/login')
 
+      # @todo: fix this test. It should raise a KazeClient::Error::NotFound but it raise a KazeClient::Error::Generic
       expect { client.execute(request) }.to raise_error(KazeClient::Error::NotFound, '404 Not Found')
     end
 
