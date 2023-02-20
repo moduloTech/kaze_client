@@ -8,7 +8,7 @@ module KazeClient
   # @see KazeClient::Utils::AuthentifiedRequest
   # @since 0.3.0
   # @example How to use
-  #   rq = KazeClient::UploadImageRequest.new(f).with_token(TOKEN)
+  #   rq = KazeClient::UploadAttachmentRequest.new(f).with_token(TOKEN)
   #   response = KazeClient::Client.new(URL).execute(rq)
   #   rq.send_attachment(response['direct_upload'])
   class UploadAttachmentRequest < Utils::FinalRequest
