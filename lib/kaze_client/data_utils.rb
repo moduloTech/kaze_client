@@ -9,7 +9,7 @@ module KazeClient
     # @param time [Integer] The datetime to parse
     # @return [Time] The parsed datetime
     # @example
-    #  KazeClient::KazeWorkflowUtils.parse_datetime(1546300800000)
+    #  KazeClient::DataUtils.parse_datetime(1546300800000)
     # => 2019-01-01 00:00:00 UTC
     def self.parse_time(time)
       Time.at(time.to_i / 1000).utc
