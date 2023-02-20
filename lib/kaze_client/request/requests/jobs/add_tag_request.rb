@@ -26,7 +26,8 @@ module KazeClient
     include Utils::AuthentifiedRequest
 
     def initialize(job_id, tag_ids)
-      super(:put, "/api/tags/references/job/#{job_id}.json")
+      super(:put, "/api/tags/references/job/#{job_id}")
+
       @body = { tags: tag_ids }
     end
   end
