@@ -11,7 +11,7 @@ module KazeClient
   #     rq = KazeClient::AddTagRequest.new(123, [1, 2, 3]).with_token('token')
   #     KazeClient::Client.new('https://kaze.modulotech.fr').execute(rq)
   # Will make a request like this:
-  #    PUT https://kaze.modulotech.fr/api/tags/references/job/123.json
+  #    PUT https://kaze.modulotech.fr/api/tags/references/job/123
   #   --- HEADERS ---
   #   {
   #       "Authorization": "token", "Content-Type": "application/json", "Accept": "application/json"
