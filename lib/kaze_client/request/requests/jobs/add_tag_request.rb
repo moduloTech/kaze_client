@@ -3,7 +3,7 @@
 module KazeClient
   # @author RICHARD Peter <richar_p@modulotech.fr>
   # KazeClient request to add tags to a job
-  # @note    This request is for the moment in re-development. It's not working well
+  # @note    This request is for the moment in re-development. It is not working well.
   #          When you add a tag with it, it doesnt check if the id is correct or not and it delete all the other tags
   #          It will be fixed in the next version of Kaze API, but for now, we use it like that
   #
