@@ -10,6 +10,7 @@ module KazeClient
   class ItemsRequest < Utils::FinalRequest
     include Utils::AuthentifiedRequest
     include Utils::ListRequest
+
     def initialize(id)
       super(:get, "api/collections/#{id}/items")
     end
