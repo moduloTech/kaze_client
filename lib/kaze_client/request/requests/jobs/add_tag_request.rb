@@ -14,7 +14,7 @@ module KazeClient
   #    PUT https://kaze.modulotech.fr/api/tags/references/job/123.json
   #   --- HEADERS ---
   #   {
-  #       "Authorization": "token"
+  #       "Authorization": "token", "Content-Type": "application/json", "Accept": "application/json"
   #   }
   #   --- BODY ---
   #   {
