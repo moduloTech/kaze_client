@@ -9,6 +9,7 @@
   - List the items assigned to the collection id
   - Fetch the details for the given item id from the given collection id
   - Add tags to a job
+  - Create a collection item
 - Fix handling of 404 HTTP status.
 
 ## [0.3.1] - 2022-11-30
