@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module KazeClient
-
   # @author chevre_a@modulotech.fr
   # Create a collection item
   # @see KazeClient::Request
@@ -9,7 +8,6 @@ module KazeClient
   # @see KazeClient::Utils::AuthentifiedRequest
   # @since 0.3.2
   class CreateCollectionItemRequest < Utils::FinalRequest
-
     include Utils::AuthentifiedRequest
 
     # @param collection_id [String]
@@ -19,7 +17,5 @@ module KazeClient
 
       @body = payload
     end
-
   end
-
 end
