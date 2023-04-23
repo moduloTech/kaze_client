@@ -24,9 +24,12 @@ require_relative 'request/requests/jobs/update_template_request'
 # => Collections
 require_relative 'request/requests/collections/collection_request'
 require_relative 'request/requests/collections/collections_request'
+
 # => => Items
 require_relative 'request/requests/collections/items/item_request'
 require_relative 'request/requests/collections/items/items_request'
+require_relative 'request/requests/collections/items/create_link_request'
+require_relative 'request/requests/collections/items/create_collection_item_request'
 
 # => General
 require_relative 'request/requests/login_request'

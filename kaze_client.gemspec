@@ -33,5 +33,5 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency 'httparty', '~> 0.18', '>= 0.18.1'
   spec.add_runtime_dependency 'jsonpath', '~> 1.1', '>= 1.1.2'
-  spec.metadata['rubygems_mfa_required'] = 'true'
+  # spec.metadata['rubygems_mfa_required'] = 'true'
 end
