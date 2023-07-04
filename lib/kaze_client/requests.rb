@@ -21,6 +21,7 @@ require_relative 'request/requests/jobs/job_workflows_request'
 require_relative 'request/requests/jobs/jobs_request'
 require_relative 'request/requests/jobs/update_template_request'
 require_relative 'request/requests/jobs/cancel_job_request'
+require_relative 'request/requests/jobs/add_tag_request'
 
 # => Collections
 require_relative 'request/requests/collections/collection_request'
