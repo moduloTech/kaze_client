@@ -7,7 +7,7 @@ module KazeClient
   # @see KazeClient::Request
   # @see KazeClient::Utils::FinalRequest
   # @see KazeClient::Utils::AuthentifiedRequest
-  class TagsRequest < Utils::FinalRequest
+  class TagRequest < Utils::FinalRequest
 
     include Utils::AuthentifiedRequest
 
