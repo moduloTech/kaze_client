@@ -32,6 +32,10 @@ require_relative 'request/requests/collections/items/items_request'
 require_relative 'request/requests/collections/items/create_link_request'
 require_relative 'request/requests/collections/items/create_collection_item_request'
 
+# => Tags
+require_relative 'request/requests/tags/tag_request'
+require_relative 'request/requests/tags/tags_request'
+
 # => General
 require_relative 'request/requests/login_request'
 require_relative 'request/requests/partners_request'
