@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    kaze_client (0.3.2.2)
+    kaze_client (0.4.0)
       httparty (~> 0.18, >= 0.18.1)
       jsonpath (~> 1.1, >= 1.1.2)
 

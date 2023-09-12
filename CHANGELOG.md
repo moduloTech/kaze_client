@@ -2,10 +2,13 @@
 
 ## [Unreleased]
 
+## [0.4.0] - 2023-09-12
+
 - Require `AddTagRequest`
 - Add new requests:
   - List all tags
   - Get details about one tag
+  - Complete step
 - Update bundler and dependencies
 
 ## [0.3.2.2] - 2023-05-31
