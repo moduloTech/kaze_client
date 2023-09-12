@@ -6,6 +6,7 @@
 - Add new requests:
   - List all tags
   - Get details about one tag
+- Update bundler and dependencies
 
 ## [0.3.2.2] - 2023-05-31
 
