@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module KazeClient
+
   # @author ciappa_m@modulotech.fr
   # Request the details about a specific workflow.
   # @see KazeClient::Request
@@ -8,6 +9,7 @@ module KazeClient
   # @see KazeClient::Utils::AuthentifiedRequest
   # @since 0.1.0
   class JobWorkflowRequest < Utils::FinalRequest
+
     include Utils::AuthentifiedRequest
 
     # @return [String] The id of the workflow to request
@@ -21,5 +23,7 @@ module KazeClient
       @query   = {}
       @filters = {}
     end
+
   end
+
 end

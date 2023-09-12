@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
 module KazeClient
+
   # @author ciappa_m@modulotech.fr
   # Authenticate a user on the server.
   # @see KazeClient::Request
   # @see KazeClient::Utils::FinalRequest
   # @since 0.1.0
   class LoginRequest < Utils::FinalRequest
+
     # @return [String] The user login.
     attr_reader :login
 
@@ -19,10 +21,12 @@ module KazeClient
       @password = password
       @body     = {
         user: {
-          login: @login,
+          login:    @login,
           password: @password
         }
       }
     end
+
   end
+
 end

@@ -1,9 +1,13 @@
 # frozen_string_literal: true
 
 module KazeClient
+
   module Collection
+
     module Item
+
       class CreateLinkRequest < Utils::FinalRequest
+
         include Utils::AuthentifiedRequest
 
         # @author chevre_a@modulotech.fr
@@ -17,7 +21,11 @@ module KazeClient
 
           @body = { id: linked_collection_item_id }
         end
+
       end
+
     end
+
   end
+
 end

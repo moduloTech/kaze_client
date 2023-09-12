@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
 module KazeClient
+
   # @author richar_p@modulotech.fr
   # Utility methods to interact with KazeData
   # @since 0.3.2
   module DataUtils
+
     # Parse a Kaze Workflow datetime
     # @param time [Integer] The datetime to parse
     # @return [Time] The parsed datetime
@@ -16,5 +18,7 @@ module KazeClient
 
       Time.at(time.to_i / 1000).utc
     end
+
   end
+
 end

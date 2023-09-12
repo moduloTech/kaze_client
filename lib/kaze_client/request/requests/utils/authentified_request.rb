@@ -1,12 +1,15 @@
 # frozen_string_literal: true
 
 module KazeClient
+
   # @since 0.1.0
   module Utils
+
     # @author ciappa_m@modulotech.fr
     # Included by the request where an authentication token is required.
     # @see KazeClient::Request
     module AuthentifiedRequest
+
       # @return [String] The authentication token
       attr_reader :token
 
@@ -20,6 +23,9 @@ module KazeClient
 
         self
       end
+
     end
+
   end
+
 end

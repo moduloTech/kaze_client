@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
 module KazeClient
+
   # @author ciappa_m@modulotech.fr
   # Utility methods to interact with JSON data
   # @see KazeClient::Response
   # @since 0.2.1
   module JsonUtils
+
     # Fetch nodes in given JSON
     #
     # @param json [KazeClient::Response,Hash,String] The JSON to analyze
@@ -32,5 +34,7 @@ module KazeClient
     def self.fetch_node(json, path)
       fetch_nodes(json, path).first
     end
+
   end
+
 end

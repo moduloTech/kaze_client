@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module KazeClient
+
   # @author pourch_t@modulotech.fr
   # @author ciappa_m@modulotech.fr
   # Upload an image to a job document from a job.
@@ -13,6 +14,7 @@ module KazeClient
   #   response = KazeClient::Client.new(URL).execute(request)
   #   request.send_image(response['direct_upload'])
   class UploadImageRequest < Utils::FinalRequest
+
     include Utils::AuthentifiedRequest
 
     def initialize(filepath)
@@ -35,5 +37,7 @@ module KazeClient
       header = direct_uploads['headers']
       HTTParty.put(direct_uploads['url'], { body: body, headers: header })
     end
+
   end
+
 end

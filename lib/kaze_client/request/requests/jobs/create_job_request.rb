@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module KazeClient
+
   # @author ciappa_m@modulotech.fr
   # Create a job from the current user to the target company.
   # @see KazeClient::Request
@@ -8,6 +9,7 @@ module KazeClient
   # @see KazeClient::Utils::AuthentifiedRequest
   # @since 0.1.0
   class CreateJobRequest < Utils::FinalRequest
+
     include Utils::AuthentifiedRequest
 
     # @return [String] The id of the target company.
@@ -25,8 +27,10 @@ module KazeClient
       @workflow  = workflow
       @body      = {
         target_id: @target_id,
-        workflow: @workflow
+        workflow:  @workflow
       }
     end
+
   end
+
 end

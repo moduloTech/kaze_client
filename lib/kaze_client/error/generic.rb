@@ -1,12 +1,15 @@
 # frozen_string_literal: true
 
 module KazeClient
+
   # @since 0.1.0
   module Error
+
     # @author ciappa_m@modulotech.fr
     # Generic error raised when Kaze server send an unknown error. By default, it is considered
     # to be an internal server error.
     class Generic < RuntimeError
+
       # @return [Symbol] The HTTP status sent by the server
       attr_reader :status
 
@@ -24,6 +27,9 @@ module KazeClient
         @status = status || :internal_server_error
         @error  = error || @status
       end
+
     end
+
   end
+
 end

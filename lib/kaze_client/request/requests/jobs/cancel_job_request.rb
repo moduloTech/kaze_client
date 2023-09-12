@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module KazeClient
+
   # @author chevre_a@modulotech.fr
   # Cancel a job.
   # @see KazeClient::Request
@@ -8,6 +9,7 @@ module KazeClient
   # @see KazeClient::Utils::AuthentifiedRequest
   # @since 0.3.0
   class CancelJobRequest < Utils::FinalRequest
+
     include Utils::AuthentifiedRequest
 
     def initialize(job_id, cancel_reason_id)
@@ -17,5 +19,7 @@ module KazeClient
         job: { cancel_reason_id: cancel_reason_id }
       }
     end
+
   end
+
 end

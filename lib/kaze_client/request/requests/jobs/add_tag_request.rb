@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module KazeClient
+
   # @author RICHARD Peter <richar_p@modulotech.fr>
   # Add tags to a job.
   # @note    This API is under development and does not work well.
@@ -27,6 +28,7 @@ module KazeClient
   # @see KazeClient::Utils::AuthentifiedRequest
   # @since 0.3.2
   class AddTagRequest < Utils::FinalRequest
+
     include Utils::AuthentifiedRequest
 
     def initialize(job_id, tag_ids)
@@ -34,5 +36,7 @@ module KazeClient
 
       @body = { tags: tag_ids }
     end
+
   end
+
 end

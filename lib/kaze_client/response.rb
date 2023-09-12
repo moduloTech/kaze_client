@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
 module KazeClient
+
   # @author ciappa_m@modulotech.fr
   # Represents response from a Kaze API
   # @see KazeClient::Client
   # @see KazeClient::Request
   # @since 0.1.0
   class Response
+
     # @return [HTTParty::Response] The response object from HTTParty call
     attr_reader :original_response
 
@@ -27,7 +29,7 @@ module KazeClient
       end
     end
 
-    def respond_to_missing?(method_name, include_private = false)
+    def respond_to_missing?(method_name, include_private=false)
       %i[original_response parsed_response].include?(method_name) || super
     end
 
@@ -73,5 +75,7 @@ module KazeClient
 
       self
     end
+
   end
+
 end

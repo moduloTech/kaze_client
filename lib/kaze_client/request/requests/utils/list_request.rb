@@ -1,11 +1,14 @@
 # frozen_string_literal: true
 
 module KazeClient
+
   module Utils
+
     # @author ciappa_m@modulotech.fr
     # Included by the request where a list will be returned.
     # @see KazeClient::Request
     module ListRequest
+
       # @return [Integer,String] The page to fetch.
       attr_reader :page
 
@@ -49,10 +52,8 @@ module KazeClient
         # Ensure the +per_page+ parameter is between 1 and 100
         @per_page = if !per_page.is_a?(Numeric) || per_page.to_i < 1
                       1
-                    elsif per_page > 100
-                      100
                     else
-                      per_page
+                      [per_page, 100].min
                     end
 
         @query[:per_page] = @per_page
@@ -97,7 +98,7 @@ module KazeClient
         match_data ? filter_by(match_data[1], args[0]) : super
       end
 
-      def respond_to_missing?(method_name, include_private = false)
+      def respond_to_missing?(method_name, include_private=false)
         method_name.match?(/^filter_by_/) || super
       end
 
@@ -115,6 +116,9 @@ module KazeClient
 
         self
       end
+
     end
+
   end
+
 end

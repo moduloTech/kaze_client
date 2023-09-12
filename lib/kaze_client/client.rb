@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
 module KazeClient
+
   # @author ciappa_m@modulotech.fr
   # Execute a KazeClient::Request, stores the server's base URL, the request and the response.
   # @see KazeClient::Request
   # @see KazeClient::Response
   # @since 0.1.0
   class Client
+
     # @return [String] The server's base URL (e.g. https://app.kaze.so)
     attr_reader :base_url
     # @return [String,nil] The last authentication token
@@ -50,7 +52,7 @@ module KazeClient
     # @raise [KazeClient::Error::NoEndpoint] if the base URL is blank
     # @raise [KazeClient::Error::Generic] if the response is not a success: not a 2xx HTTP status
     # @see KazeClient::Client#do_execute
-    def login(login = @login, password = @password)
+    def login(login=@login, password=@password)
       # Impossible to login using nil login or password.
       # The first call to #login must be given a login and a password.
       raise KazeClient::Error::InvalidCredentials, 'Please set login and password' if login.nil? || password.nil?
@@ -106,5 +108,7 @@ module KazeClient
       # Build the response object from the HTTParty response
       Response.new(@response)
     end
+
   end
+
 end

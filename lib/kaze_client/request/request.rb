@@ -1,16 +1,18 @@
 # frozen_string_literal: true
 
 module KazeClient
+
   # @author ciappa_m@modulotech.fr
   # Represents request to a Kaze API
   # @see KazeClient::Client
   # @see KazeClient::Response
   # @since 0.1.0
   class Request
+
     # Those headers are added on all requests by default
     DEFAULT_HEADERS = {
       'Content-Type' => 'application/json',
-      'Accept' => 'application/json'
+      'Accept'       => 'application/json'
     }.freeze
 
     # @return [String, Symbol] The HTTP verb to use for the request
@@ -123,5 +125,7 @@ module KazeClient
         Error::Generic.new(status: response.code, error: error, message: message)
       end
     end
+
   end
+
 end
