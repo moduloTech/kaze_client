@@ -25,7 +25,7 @@ module KazeClient
       super(:put, "api/jobs/#{job_id}/cells/#{step_id}")
 
       @body = {
-        "data": {
+        data: {
           step_id => { completed: { value: true } }
         }
       }
