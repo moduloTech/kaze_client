@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [Unreleased]
+
+- Require `AddTagRequest`
+- Add new requests:
+  - List all tags
+  - Get details about one tag
+
 ## [0.3.2.2] - 2023-05-31
 
 - Add new requests:
