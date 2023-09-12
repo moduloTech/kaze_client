@@ -18,6 +18,28 @@ Or install it yourself as:
 
     $ gem install kaze_client
 
+## Usage
+
+Here is an example of how to chain requests:
+
+```ruby
+require 'kaze_client'
+
+client = KazeClient::Client.new('https://app.kaze.so', token: 'A_valid_token')
+request = KazeClient::JobsRequest.new.filter_by_status('completed').filter_by_query('client_reference_42')
+
+response = client.execute(request)
+
+first_job = response.dig['data'].first
+puts("First job id: #{first_job['id']}")
+
+request = KazeClient::JobRequest.new(first_job['id'])
+
+job = client.execute(request)
+pickup_address = job.fetch_data_from_child('pick_up_address', field: 'city')
+puts("City: #{pickup_address}")
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
