@@ -23,6 +23,7 @@ require_relative 'request/requests/jobs/update_template_request'
 require_relative 'request/requests/jobs/cancel_job_request'
 require_relative 'request/requests/jobs/add_tag_request'
 require_relative 'request/requests/jobs/complete_step_request'
+require_relative 'request/requests/jobs/change_supervisors_request'
 
 # => Collections
 require_relative 'request/requests/collections/collection_request'
