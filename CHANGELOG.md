@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+- Add new request: list items linked to a collection.
+
 ## [0.4.0] - 2023-09-12
 
 - Require `AddTagRequest`
