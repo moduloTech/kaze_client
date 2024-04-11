@@ -17,7 +17,7 @@ module KazeClient
         # @see KazeClient::Utils::FinalRequest
         # @see KazeClient::Utils::AuthentifiedRequest
         # @see KazeClient::Utils::ListRequest
-        # @since 0.4.0
+        # @since 0.4.1
         def initialize(collection_id, collection_item_id)
           super(:get, "api/collections/#{collection_id}/items/#{collection_item_id}/linked_collections")
         end
