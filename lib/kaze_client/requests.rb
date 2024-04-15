@@ -15,6 +15,7 @@ require_relative 'request/requests/utils/final_request'
 # => Jobs
 require_relative 'request/requests/jobs/assign_performer_request'
 require_relative 'request/requests/jobs/create_job_request'
+require_relative 'request/requests/jobs/create_job_from_workflow_request'
 require_relative 'request/requests/jobs/job_request'
 require_relative 'request/requests/jobs/job_workflow_request'
 require_relative 'request/requests/jobs/job_workflows_request'

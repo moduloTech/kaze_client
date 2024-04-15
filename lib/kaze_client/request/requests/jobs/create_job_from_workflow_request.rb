@@ -3,8 +3,7 @@
 module KazeClient
 
   # @author bourda_c@modulotech.fr
-  # Create a job from the current user to the target company. using
-  # the endpoint job_workflow/job#create
+  # Create a job from the current user to the job workflow
   # @see KazeClient::Request
   # @see KazeClient::Utils::FinalRequest
   # @see KazeClient::Utils::AuthentifiedRequest
