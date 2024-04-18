@@ -12,11 +12,11 @@ module KazeClient
 
     include Utils::AuthentifiedRequest
 
-    # @return [String] The id of the target company.
-    attr_reader :target_id
+    # @return [String] The id of the target workflow.
+    attr_reader :workflow_id
 
     # @return [Hash] The workflow used to create the job.
-    attr_reader :workflow
+    attr_reader :job_workflow
 
     # @param workflow_id [String] The id of the target job Workflow.
     # @param job_workflow [Hash] The workflow to use to create the job.
