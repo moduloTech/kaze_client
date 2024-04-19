@@ -3,7 +3,7 @@
 ## [Unreleased]
 
 - Add new request: list items linked to a collection.
-- Add new request: Create a job from it's job_workflow.
+- Add new request: Create a job from its workflow.
 
 ## [0.4.0] - 2023-09-12
 
