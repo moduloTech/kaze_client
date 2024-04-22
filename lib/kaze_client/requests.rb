@@ -34,6 +34,7 @@ require_relative 'request/requests/collections/items/item_request'
 require_relative 'request/requests/collections/items/items_request'
 require_relative 'request/requests/collections/items/create_link_request'
 require_relative 'request/requests/collections/items/create_collection_item_request'
+require_relative 'request/requests/collections/items/update_collection_item_request'
 require_relative 'request/requests/collections/items/linked_collections_request'
 
 # => Tags
