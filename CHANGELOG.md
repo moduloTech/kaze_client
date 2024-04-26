@@ -7,6 +7,7 @@
 - Add new request: Update a collection's item.
 - Add new request: Update a job's cell.
 - Add new request: Delete a collection's item.
+- Fetch the details for the given user.
 
 ## [0.4.0] - 2023-09-12
 

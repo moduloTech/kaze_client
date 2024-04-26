@@ -7,7 +7,7 @@ module KazeClient
   # @see KazeClient::Request
   # @see KazeClient::Utils::FinalRequest
   # @see KazeClient::Utils::AuthentifiedRequest
-  # @since 0.1.0
+  # @since 0.4.1
   class UpdateJobCell < Utils::FinalRequest
 
     include Utils::AuthentifiedRequest
