@@ -3,7 +3,7 @@
 ## [Unreleased]
 
 - Add new request: list items linked to a collection.
-- Add new request: Create a job from it's workflow.
+- Add new request: Create a job from its workflow.
 - Add new request: Update a collection's item.
 - Add new request: Update a job's cell.
 - Add new request: Delete a collection's item.
