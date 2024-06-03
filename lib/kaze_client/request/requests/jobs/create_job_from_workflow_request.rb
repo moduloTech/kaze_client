@@ -20,12 +20,14 @@ module KazeClient
 
     # @param workflow_id [String] The id of the target job Workflow.
     # @param job_workflow [Hash] The workflow to use to create the job.
-    def initialize(workflow_id, job_workflow)
+    def initialize(workflow_id, job_workflow, target_id, performer_user_id)
       super(:post, "api/job_workflows/#{workflow_id}/job.json")
 
       @job_workflow = job_workflow
       @body = {
-        data: @job_workflow
+        target_id:         target_id,
+        performer_user_id: performer_user_id,
+        data:              @job_workflow
       }
     end
 
