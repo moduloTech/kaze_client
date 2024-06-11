@@ -40,7 +40,7 @@ GEM
     racc (1.7.1)
     rainbow (3.1.1)
     rake (13.0.6)
-    rdoc (6.5.0)
+    rdoc (6.5.1.1)
       psych (>= 4.0.0)
     regexp_parser (2.8.1)
     reline (0.3.8)
@@ -81,10 +81,11 @@ GEM
     stringio (3.0.8)
     thor (1.2.2)
     unicode-display_width (2.4.2)
-    yard (0.9.34)
+    yard (0.9.36)
 
 PLATFORMS
   aarch64-linux
+  arm64-darwin-22
   x86_64-darwin-20
 
 DEPENDENCIES
@@ -96,7 +97,7 @@ DEPENDENCIES
   rubocop (~> 1.30)
   rubocop-rake (~> 0.6.0)
   rubocop-rspec (~> 2.11.1)
-  yard (~> 0.9.28)
+  yard (~> 0.9.36)
 
 BUNDLED WITH
    2.4.19

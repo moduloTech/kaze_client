@@ -15,7 +15,7 @@ module KazeClient
       include Utils::AuthentifiedRequest
 
       def initialize(collection_id, item_id)
-        super(:get, "api/collection/#{collection_id}/items/#{item_id}")
+        super(:get, "api/collections/#{collection_id}/items/#{item_id}")
       end
 
     end
