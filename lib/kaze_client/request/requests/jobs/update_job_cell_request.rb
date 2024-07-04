@@ -26,9 +26,7 @@ module KazeClient
 
       @body = {
         data:               {
-          cell_id => {
-            data: cell_data
-          }
+          cell_id => cell_data
         },
         skip_version_check: skip_version_check ? 1 : 0
       }
