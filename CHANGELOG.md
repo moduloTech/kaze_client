@@ -8,6 +8,9 @@
 - Add new request: Update a job's cell.
 - Add new request: Delete a collection's item.
 - Fetch the details for the given user.
+- Add `KazeClient.configure` to centrally set headers added to every request.
+- Send a default `User-Agent` header (`kaze_client/<version>`) on every request.
+- Allow passing `headers:` to `KazeClient::Client.new` to add headers to every request from that client.
 
 ## [0.4.0] - 2023-09-12
 

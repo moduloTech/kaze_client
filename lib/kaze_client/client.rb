@@ -14,12 +14,18 @@ module KazeClient
     # @return [String,nil] The last authentication token
     # @see KazeClient::Client#login
     attr_reader :token
+    # @return [Hash] Headers added to every request executed by this client
+    attr_reader :headers
 
     # @param base_url [String] The server's base URL (e.g. https://app.kaze.so)
     # @param token [String] The authentication token
-    def initialize(base_url, token: nil)
+    # @param headers [Hash] Headers added to every request executed by this client.
+    #   They override the default and globally configured headers but are overridden by
+    #   per-request headers.
+    def initialize(base_url, token: nil, headers: {})
       @base_url = base_url
       @token    = token
+      @headers  = headers || {}
       @login    = nil
       @password = nil
     end
@@ -98,6 +104,7 @@ module KazeClient
       raise Error::NoEndpoint, @base_url if @base_url.blank?
 
       @request = request
+      @request.with_client_headers(@headers)
 
       request_url = "#{@base_url}/#{request.url}"
       @response   = HTTParty.send(request.method, request_url, **@request.parameters)
