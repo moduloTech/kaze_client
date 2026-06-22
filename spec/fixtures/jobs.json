@@ -1,0 +1,97 @@
+{
+  "meta": {
+    "page": 1,
+    "per_page": 100,
+    "filter": {
+      "status": [
+        "waiting"
+      ]
+    },
+    "order_field": "created_at",
+    "order_direction": "desc",
+    "total_pages": 1,
+    "total_count": 2
+  },
+  "data": [
+    {
+      "id": "c616f8de-7d7e-4a35-96c9-41c1345a6234",
+      "owner_id": "0b0cc46c-03b6-4033-91ab-6da31f1a403b",
+      "owner_name": "Test",
+      "target_id": "0b0cc46c-03b6-4033-91ab-6da31f1a403b",
+      "target_name": "Test",
+      "title": "Test with widget",
+      "reference": "",
+      "own": true,
+      "status": "assigned",
+      "current_step_id": "41c569e7-16ea-4207-852d-f66203dcd163",
+      "first_not_completed_step_id": null,
+      "steps": [
+        {
+          "id": "41c569e7-16ea-4207-852d-f66203dcd163",
+          "label": "Job Summary"
+        },
+        {
+          "id": "test_template_blank",
+          "label": "Template blank"
+        }
+      ],
+      "performer_estimation": 60,
+      "favorite_widgets": [],
+      "job_workflow_id": "03e70f4d-e9bf-4e14-a9a1-d45aff5832ff",
+      "annex": false,
+      "status_name": "Assigned",
+      "due_date": 1654106520000,
+      "start_date": 1654106520000,
+      "end_date": 1654110120000,
+      "completed_at": null,
+      "status_started_at": null,
+      "job_notes_updated_at": null,
+      "job_data_updated_at": null,
+      "created_at": 1654099359647,
+      "updated_at": 1654099451343,
+      "work_order_address": {
+        "address": "2 Rue Michelet, 92130 Issy-les-Moulineaux, France",
+        "location": "48.827934,2.281815"
+      },
+      "tags": []
+    },
+    {
+      "id": "ee33d67a-3211-4781-b589-4b76d1bb7462",
+      "owner_id": "0b0cc46c-03b6-4033-91ab-6da31f1a403b",
+      "owner_name": "Test",
+      "target_id": "0b0cc46c-03b6-4033-91ab-6da31f1a403b",
+      "target_name": "Test",
+      "title": "Test",
+      "reference": "test",
+      "own": true,
+      "status": "assigned",
+      "current_step_id": "73174ebd-d32a-43df-9742-007c7ec78706",
+      "first_not_completed_step_id": null,
+      "steps": [
+        {
+          "id": "73174ebd-d32a-43df-9742-007c7ec78706",
+          "label": "Job Summary"
+        }
+      ],
+      "performer_estimation": 60,
+      "favorite_widgets": [],
+      "job_workflow_id": "e0d12be4-7532-4282-8a4f-4c444a4c0dc5",
+      "annex": false,
+      "status_name": "Assigned",
+      "due_date": 4133980740000,
+      "start_date": 4133980740000,
+      "end_date": 4133984340000,
+      "completed_at": 1634806835317,
+      "status_started_at": null,
+      "job_notes_updated_at": null,
+      "job_data_updated_at": null,
+      "created_at": 1619266723664,
+      "updated_at": 1634806835317,
+      "work_order_address": {
+        "address": "Paris",
+        "location": "48.856697,2.351462"
+      },
+      "tags": []
+    }
+  ]
+}

@@ -8,15 +8,22 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
+    addressable (2.9.0)
+      public_suffix (>= 2.0.2, < 8.0)
     ast (2.4.2)
     base64 (0.1.1)
+    bigdecimal (4.1.2)
     bundler-audit (0.9.1)
       bundler (>= 1.2.0, < 3)
       thor (~> 1.0)
+    crack (1.0.1)
+      bigdecimal
+      rexml
     debug (1.8.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
     diff-lcs (1.5.0)
+    hashdiff (1.2.1)
     httparty (0.21.0)
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
@@ -37,6 +44,7 @@ GEM
       racc
     psych (5.1.0)
       stringio
+    public_suffix (7.0.5)
     racc (1.7.1)
     rainbow (3.1.1)
     rake (13.0.6)
@@ -81,6 +89,10 @@ GEM
     stringio (3.0.8)
     thor (1.2.2)
     unicode-display_width (2.4.2)
+    webmock (3.26.2)
+      addressable (>= 2.8.0)
+      crack (>= 0.3.2)
+      hashdiff (>= 0.4.0, < 2.0.0)
     yard (0.9.36)
 
 PLATFORMS
@@ -98,6 +110,7 @@ DEPENDENCIES
   rubocop (~> 1.30)
   rubocop-rake (~> 0.6.0)
   rubocop-rspec (~> 2.11.1)
+  webmock (~> 3.0)
   yard (~> 0.9.36)
 
 BUNDLED WITH

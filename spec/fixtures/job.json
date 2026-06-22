@@ -1,0 +1,92 @@
+{
+  "id": "c616f8de-7d7e-4a35-96c9-41c1345a6234",
+  "title": "Test with widget",
+  "reference": "",
+  "owner_id": "0b0cc46c-03b6-4033-91ab-6da31f1a403b",
+  "target_id": "0b0cc46c-03b6-4033-91ab-6da31f1a403b",
+  "job_workflow_id": "03e70f4d-e9bf-4e14-a9a1-d45aff5832ff",
+  "status": "assigned",
+  "current_step_id": "41c569e7-16ea-4207-852d-f66203dcd163",
+  "first_not_completed_step_id": null,
+  "watcher_ids": [],
+  "owner_name": "Test",
+  "target_name": "Test",
+  "own": false,
+  "annex": false,
+  "annex_performers": [],
+  "supervisors": [],
+  "status_name": "Assigned",
+  "restrict_completed_update": false,
+  "restrict_cancelled_update": false,
+  "assigned_tag_ids": [],
+  "tags": [],
+  "workflow": {
+    "type": "workflow",
+    "id": "caaa82de-7240-4214-8ca4-b43df00a5d49",
+    "children": [
+      {
+        "type": "template_job_info",
+        "id": "41c569e7-16ea-4207-852d-f66203dcd163",
+        "label": "Job Summary",
+        "access": 133,
+        "sms_link": true,
+        "sms_sender": "Kaze",
+        "display_expanded": true,
+        "generate_documents": [],
+        "city": "Issy-les-Moulineaux",
+        "state": "IDF",
+        "country_code": "fr",
+        "zip_code": 92130,
+        "job_title": "Test with widget",
+        "job_due_date": 1654106520000,
+        "job_address": "2 Rue Michelet, 92130 Issy-les-Moulineaux, France",
+        "job_location": "48.8279341,2.2818154",
+        "performer_estimation": 60,
+        "files": [],
+        "rules": []
+      },
+      {
+        "type": "template_blank",
+        "id": "test_template_blank",
+        "label": "Template blank",
+        "access": 133,
+        "sms_link": true,
+        "sms_sender": "Kaze",
+        "display_expanded": true,
+        "generate_documents": [],
+        "children": [
+          {
+            "type": "section",
+            "id": "33934fe4-480f-4949-988d-9bd6ab63d0ab",
+            "access": 111,
+            "direction": "col",
+            "children": [
+              {
+                "type": "widget_text",
+                "id": "test_widget_text",
+                "label": "Test widget text",
+                "access": 133,
+                "data_type": "string",
+                "data": "this is a test."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "access": 0
+  },
+  "white_label_id": null,
+  "due_date": 1654106520000,
+  "start_date": 1654106520000,
+  "end_date": 1654110120000,
+  "job_notes_updated_at": null,
+  "job_data_updated_at": null,
+  "created_at": 1654099359647,
+  "updated_at": 1654099451343,
+  "bwa_link": "https://staging.kaze.so/b/j/0-kNNEHG1NnwNcdD_rGVIQ",
+  "work_order_address": {
+    "address": "2 Rue Michelet, 92130 Issy-les-Moulineaux, France",
+    "location": "48.827934,2.281815"
+  }
+}

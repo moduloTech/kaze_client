@@ -3,9 +3,55 @@
 # rubocop:disable Metrics/BlockLength
 
 RSpec.describe KazeClient do
-  # rubocop:disable Layout/LineLength
-  let(:auth_token) { 'g0gMaMK3wy53OhrOb250NpYeebpEsKA9JJI70l7G8bHtZgHtDDj8bBOsc4euXph5HEldQumppYytrreeADwkEiQBOr1Revqx56AuvNZqaS2NyvXqME3KLGe6R2YjKY5i' }
-  # rubocop:enable Layout/LineLength
+  # A fake token: requests are stubbed (see the before block), so its value is never verified.
+  let(:auth_token) { 'test-auth-token' }
+
+  let(:base_url) { 'https://staging.kaze.so' }
+
+  # The +Content-Type+ is required: HTTParty only parses the body as JSON when the server
+  # announces it, so without it the response stays a raw String.
+  let(:json_headers) { { 'Content-Type' => 'application/json' } }
+
+  # Stub every endpoint the suite exercises with a captured (or crafted) response so the tests
+  # never hit the real server. WebMock raises on any unstubbed request (see spec_helper).
+  before do
+    # Unknown API: '/login' resolves to '<base>//login' and the server replies 404.
+    stub_request(:post, "#{base_url}//login")
+      .to_return(status: 404, headers: json_headers, body: { status: 404, error: 'Not Found' }.to_json)
+
+    # Login with valid credentials returns a token.
+    stub_request(:post, "#{base_url}/api/login")
+      .with(body: { user: { login: 'test@test.test', password: 'password' } }.to_json)
+      .to_return(status: 200, headers: json_headers, body: { token: auth_token }.to_json)
+
+    # Login with invalid credentials is rejected.
+    stub_request(:post, "#{base_url}/api/login")
+      .with(body: { user: { login: 'login', password: 'password' } }.to_json)
+      .to_return(status: 401, headers: json_headers,
+                 body: { error: 'invalid_credentials', message: 'Invalid Login or Password' }.to_json)
+
+    stub_request(:get, "#{base_url}/api/profile")
+      .to_return(status: 200, headers: json_headers, body: fixture('profile'))
+
+    # /api/companies (partners) echoes the pagination/sorting/filtering metadata back. The query
+    # is matched loosely so any combination of list parameters resolves to the same response.
+    stub_request(:get, %r{#{base_url}/api/partners}).to_return(
+      status:  200,
+      headers: json_headers,
+      body:    {
+        meta: {
+          page: 5, per_page: 42, order_field: 'id', order_direction: 'desc',
+          filter: { id: 'a', email: %w[a] }, total_pages: 0, total_count: 0
+        },
+        data: []
+      }.to_json
+    )
+
+    stub_request(:get, "#{base_url}/api/jobs")
+      .to_return(status: 200, headers: json_headers, body: fixture('jobs'))
+    stub_request(:get, "#{base_url}/api/jobs/c616f8de-7d7e-4a35-96c9-41c1345a6234")
+      .to_return(status: 200, headers: json_headers, body: fixture('job'))
+  end
 
   it 'has a version number' do
     expect(KazeClient::VERSION).not_to be nil
