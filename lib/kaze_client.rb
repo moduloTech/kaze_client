@@ -13,6 +13,7 @@ require 'jsonpath'
 require_relative 'kaze_client/version'
 
 # Require the different parts of the gem
+require_relative 'kaze_client/configuration'
 require_relative 'kaze_client/json_utils'
 require_relative 'kaze_client/data_utils'
 require_relative 'kaze_client/errors'

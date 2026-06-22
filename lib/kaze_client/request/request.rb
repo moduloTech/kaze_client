@@ -12,7 +12,8 @@ module KazeClient
     # Those headers are added on all requests by default
     DEFAULT_HEADERS = {
       'Content-Type' => 'application/json',
-      'Accept'       => 'application/json'
+      'Accept'       => 'application/json',
+      'User-Agent'   => "kaze_client/#{KazeClient::VERSION}"
     }.freeze
 
     # @return [String, Symbol] The HTTP verb to use for the request
@@ -44,11 +45,24 @@ module KazeClient
     # @param method [Symbol] The HTTP verb to use for the request (e.g. :get)
     # @param url [String] The API endpoint (e.g. /jobs)
     def initialize(method, url)
-      @method  = method
-      @url     = url
-      @query   = nil
-      @body    = nil
-      @headers = {}
+      @method         = method
+      @url            = url
+      @query          = nil
+      @body           = nil
+      @headers        = {}
+      @client_headers = {}
+    end
+
+    # Store the headers configured on the executing client so they can be merged
+    # into the request. Called by KazeClient::Client at execution time.
+    #
+    # @param headers [Hash, nil] The client-level headers
+    # @return [KazeClient::Request] self (to chain methods)
+    # @see KazeClient::Client
+    def with_client_headers(headers)
+      @client_headers = headers.is_a?(Hash) ? headers : {}
+
+      self
     end
 
     # @return [Hash] The arguments to give to the HTTParty call
@@ -77,12 +91,17 @@ module KazeClient
     protected
 
     # @return [Hash] The headers for the request
-    #   If +@headers+ is blank or is not a Hash, it returns the +DEFAULT_HEADERS+. Else it merges
-    #   the +DEFAULT_HEADERS+ with +@headers+ allowing +@headers+ to override +DEFAULT_HEADERS+.
+    #   Headers are merged with the following precedence (later overrides earlier):
+    #   +DEFAULT_HEADERS+, the globally configured headers (+KazeClient.configuration.headers+),
+    #   the client-level headers (+KazeClient::Client.new(headers:)+), then the per-request +@headers+.
+    # @see KazeClient.configure
+    # @see KazeClient::Client
     def make_headers
-      return DEFAULT_HEADERS if @headers.blank? || !@headers.is_a?(Hash)
+      base = DEFAULT_HEADERS.merge(KazeClient.configuration.headers).merge(@client_headers)
 
-      DEFAULT_HEADERS.merge(@headers)
+      return base if @headers.blank? || !@headers.is_a?(Hash)
+
+      base.merge(@headers)
     end
 
     # @return [nil, String] The body for the request
